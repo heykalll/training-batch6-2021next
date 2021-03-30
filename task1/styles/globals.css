@@ -7,10 +7,27 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+  color: rgb(209, 38, 72);
+}
+
+h1 {
+  font-size: 18px;
 }
 
 * {
   box-sizing: border-box;
+}
+
+title {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div .title {
+  font-size: 54px;
 }

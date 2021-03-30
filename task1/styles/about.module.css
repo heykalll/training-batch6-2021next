@@ -1,0 +1,9 @@
+.bio {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 38px;
+  margin: 15px;
+}
