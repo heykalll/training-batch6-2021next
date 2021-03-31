@@ -1,18 +1,23 @@
 import React from 'react'
+import Link from 'next/link'
 
 function fetchApi({characters}) {
-  return <div> {
-    characters.map( character => {
-      return (
-        <div>
-          <p>Name: {character.name}</p>
-          <p>Species: {character.species}</p>
-          <p>Gender: {character.gender}</p>
-          <br></br>
-        </div>
-      ) 
-    })
-  }
+  return <div> 
+    <h1>
+      <Link href="/">Back To Home</Link>
+    </h1>
+    {
+      characters.map((character) => {
+        return (
+          <div key={character.id}>
+            <p>Name: {character.name}</p>
+            <p>Species: {character.species}</p>
+            <p>Gender: {character.gender}</p>
+            <br></br>
+          </div>
+        ) 
+      })
+    }
   </div>
 }
 
