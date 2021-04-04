@@ -7,7 +7,7 @@ function CategoryDetail({characters}) {
   const router = useRouter()
   const { url_key } = router.query
   return <div> 
-      <p>ini category {url_key}</p>
+      <p>ini category: {url_key}</p>
   </div>
 }
 
