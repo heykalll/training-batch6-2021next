@@ -1,16 +1,27 @@
 import { gql, useQuery } from "@apollo/client";
 import { withApollo } from "../lib/apollo/apolloClient";
+import Link from 'next/link'
+
 const GET_CATEGORY = gql`
   query getProduct{
     categories(filters: {
-      url_key: {
+      name: {
+        match: "Default Category"
       }
-    }) {
-      __typename
+    }){
       items{
+        id
         name
-        image
+        description
+        children{
+          id
+          name
+          description
+          url_key
+          include_in_menu
+        }
       }
+      total_count
     }
   }
 `;
@@ -20,7 +31,7 @@ const GET_CATEGORY = gql`
     variables: { $filters: "" },
     useGETForQueries: true,
   });
-  console.log(data);
+  // console.log(data);
   if (loading) {
     return <p>loading</p>;
   }
