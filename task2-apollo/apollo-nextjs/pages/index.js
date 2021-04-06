@@ -1,6 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 import { withApollo } from "../lib/apollo/apolloClient";
 import Link from 'next/link'
+import { Typography, AppBar, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core'
+import StorefrontIcon from '@material-ui/icons/Storefront'
 
 const GET_CATEGORY = gql`
   query getProduct{
@@ -30,7 +32,7 @@ const GET_CATEGORY = gql`
     variables: { $filters: "" },
     useGETForQueries: true,
   });
-  // console.log(data);
+  
   if (loading) {
     return <p>loading</p>;
   }
@@ -38,26 +40,58 @@ const GET_CATEGORY = gql`
     return <p>error</p>;
   }
   return (
-    <div> 
-      {
-        data.categories.items[0].children.map((category) => {
-          if (category.include_in_menu === 1) {
-            return (
-              <div key={ category.url_key }>
-                <h1>
-                  <Link href={{
-                    pathname: '/category/[slug]',
-                    query: { slug: category.url_key},
-                  }}>
-                    {category.name}
-                  </Link>
-                </h1>
-              </div>
-            ) 
-          }
-        })
-      }
-    </div>
+    <>
+      <CssBaseline/>
+        <AppBar position='relative'>
+          <Toolbar>
+            <StorefrontIcon/>
+              {
+                data.categories.items[0].children.map((category) => {
+                  if (category.include_in_menu === 1) {
+                    return (
+                      <div key={ category.url_key }>
+                        <Typography variant='h6' align='center' color='white' gutterBottom>
+                          <Button color='white'>
+                            <Link href={{
+                              pathname: '/category/[slug]',
+                              query: { slug: category.url_key},
+                            }}>
+                              {category.name}
+                            </Link>
+                          </Button>           
+                        </Typography>
+                      </div>
+                    ) 
+                  }
+                })
+              }
+          </Toolbar>
+        </AppBar>
+      <main>
+        <div>
+          <Container maxWidth='m'>
+            <Typography variant='h2' align='center' color='textPrimary' gutterBottom>
+              Welcome to the Store
+            </Typography>
+            <Typography variant='h5' align='center' color='textSecondary' gutterBottom>
+              This is the all list of most demand Product 
+            </Typography>
+            <div>
+              <Grid container spacing={2} justify='center'>
+                <Grid>
+                  <Button item>
+                  
+                    <Button variant='contained' color='primary'>
+                      
+                    </Button>
+                  </Button>
+                </Grid>
+              </Grid>
+            </div>
+          </Container>
+        </div>
+      </main>
+    </>
   )
 }
 
