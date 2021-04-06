@@ -1,5 +1,5 @@
 import React from 'react'
-import { withApollo } from "../../lib/apollo/apolloClient";
+import { withApollo } from "../../../lib/apollo/apolloClient";
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -76,14 +76,21 @@ function CategoryDetail({characters}) {
                 {
                   category.products.items.map(product => {
                     return (
-                      <h1>
-                        <Link href={{
-                          pathname: '/category/[slug]',
-                          query: { slug: [category.url_key]}
-                        }}>
-                          {product.name}
-                        </Link>
-                      </h1>
+                      <div>
+                        <h1 key={product.url_key}>
+                          <Link href={{
+                            pathname: '/category/[slug]/[product]',
+                            query: { 
+                              slug: [category.url_key],
+                              product: [product.url_key]
+                            }
+                          }}>
+                            {product.name}
+                          </Link>
+                        </h1>
+                        <p>{product.image.url}</p>
+                        <p>{product.price_range.minimum_price.regular_price.currency} {Math.round(product.price_range.minimum_price.regular_price.value * 14000).toLocaleString()}</p>
+                      </div>
                     )
                   })
                 }

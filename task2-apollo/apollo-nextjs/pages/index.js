@@ -16,7 +16,6 @@ const GET_CATEGORY = gql`
         children{
           id
           name
-          description
           url_key
           include_in_menu
         }
