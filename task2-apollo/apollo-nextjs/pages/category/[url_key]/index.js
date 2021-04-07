@@ -101,7 +101,7 @@ function CategoryDetail({characters}) {
                     return (
                       <div key={ category.url_key }>
                         <Typography variant='h6' align='center' gutterBottom>
-                          <Button color='white'>
+                          <Button color='default'>
                             <Link href={{
                               pathname: '/category/[slug]',
                               query: { slug: category.url_key},
@@ -119,7 +119,7 @@ function CategoryDetail({characters}) {
         </AppBar>
       <main>
         <div className={classes.container}>
-          <Container maxWidth='m' style={{ marginTop: '5px' }}>
+          <Container maxWidth='md' style={{ marginTop: '5px' }}>
             <Typography variant='h2' align='center' color='textPrimary' gutterBottom>
               Welcome to the Store
             </Typography>
@@ -134,122 +134,45 @@ function CategoryDetail({characters}) {
               data.categories.items[0].children.map((category) => {
                 if (category.url_key === url_key) {
                   return category.products.items.map(product => {
-                        return (
-                          <Grid item key={product.url_key}>
-                            <Card className={classes.card}>
-                              <CardMedia
-                                className={classes.cardMedia}
-                                image={product.image.url}
-                                title='Image title'
-                              />
-                              <CardContent className={classes.CardContent}>
-                                <Typography variant='h7'>
-                                {product.name}
-                                </Typography>
-                              </CardContent>
-                              <CardContent className={classes.CardContent}>
-                                <Typography>
-                                {product.price_range.minimum_price.regular_price.currency} {Math.round(product.price_range.minimum_price.regular_price.value * 14000).toLocaleString()}
-                                </Typography>
-                              </CardContent>
-                              <CardActions>
-                                <Button size='small' color='primary'>
-                                  <Link href={{
-                                    pathname: '/category/[slug]/[product]',
-                                    query: { 
-                                      slug: [category.url_key],
-                                      product: [product.url_key]
-                                    }
-                                  }}>
-                                    View Product
-                                  </Link>
-                                </Button>
-                                <Button size='small' color='primary'>Buy Now</Button>
-                              </CardActions>
-                            </Card>
-                          </Grid>
-                          
-                          // <div>
-                          //   <h1 key={product.url_key}>
-                              // <Link href={{
-                              //   pathname: '/category/[slug]/[product]',
-                              //   query: { 
-                              //     slug: [category.url_key],
-                              //     product: [product.url_key]
-                              //   }
-                              // }}>
-                              //   {product.name}
-                              // </Link>
-                          //   </h1>
-                          //   <p>{product.image.url}</p>
-                          //   <p>{product.price_range.minimum_price.regular_price.currency} {Math.round(product.price_range.minimum_price.regular_price.value * 14000).toLocaleString()}</p>
-                          // </div>
-                        )
-                      
-                    }
-
-
-                    
-                    
-
-
-
-
-                    // <div key={category.url_key}>
-                    //   <p>ini category: {category.name}</p>
-                    //   <p>Description: {category.description}</p>
-                    //   <p>Image: {category.image}</p>
-                      // {
-                      //   category.products.items.map(product => {
-                      //     return (
-                      //       <div>
-                      //         <h1 key={product.url_key}>
-                      //           <Link href={{
-                      //             pathname: '/category/[slug]/[product]',
-                      //             query: { 
-                      //               slug: [category.url_key],
-                      //               product: [product.url_key]
-                      //             }
-                      //           }}>
-                      //             {product.name}
-                      //           </Link>
-                      //         </h1>
-                      //         <p>{product.image.url}</p>
-                      //         <p>{product.price_range.minimum_price.regular_price.currency} {Math.round(product.price_range.minimum_price.regular_price.value * 14000).toLocaleString()}</p>
-                      //       </div>
-                      //     )
-                      //   })
-                      // }
-                    // </div>
-                  ) 
+                    return (
+                      <Grid item key={product.url_key}>
+                        <Card className={classes.card}>
+                          <CardMedia
+                            className={classes.cardMedia}
+                            image={product.image.url}
+                            title='Image title'
+                          />
+                          <CardContent className={classes.CardContent}>
+                            <Typography variant='subtitle2'>
+                            {product.name}
+                            </Typography>
+                          </CardContent>
+                          <CardContent className={classes.CardContent}>
+                            <Typography>
+                            {product.price_range.minimum_price.regular_price.currency} {Math.round(product.price_range.minimum_price.regular_price.value * 14000).toLocaleString()}
+                            </Typography>
+                          </CardContent>
+                          <CardActions>
+                            <Button size='small' color='primary'>
+                              <Link href={{
+                                pathname: '/category/[slug]/[product]',
+                                query: { 
+                                  slug: [category.url_key],
+                                  product: [product.url_key]
+                                }
+                              }}>
+                                View Product
+                              </Link>
+                            </Button>
+                            <Button size='small' color='primary'>Buy Now</Button>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                    )
+                  }) 
                 }
               })
             }
-
-
-
-
-            {/* <Grid item>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image='https://source.unsplash.com/random'
-                  title='Image title'
-                />
-                <CardContent className={classes.CardContent}>
-                  <Typography gutterBottom variant='h5'>
-                    Heading
-                  </Typography>
-                  <Typography>
-                    Ini Deskripsi dari card
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size='small' color='primary'>View Product</Button>
-                  <Button size='small' color='primary'>Buy Now</Button>
-                </CardActions>
-              </Card>
-            </Grid> */}
           </Grid>
         </Container>
       </main>

@@ -76,18 +76,6 @@ const GET_CATEGORY = gql`
             <Typography variant='h5' align='center' color='textSecondary' gutterBottom>
               This is the all list of most demand Product 
             </Typography>
-            <div>
-              <Grid container spacing={2} justify='center'>
-                <Grid>
-                  <Button item>
-                  
-                    <Button variant='contained' color='primary'>
-                      
-                    </Button>
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Container>
         </div>
       </main>
